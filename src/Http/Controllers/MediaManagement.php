@@ -162,11 +162,11 @@ class MediaManagement extends Controller
     {
         return [
             'path'       => $this->path,
-            'index'      => route('dcat.admin.media-index'),
-            'move'       => route('dcat.admin.media-move'),
-            'delete'     => route('dcat.admin.media-delete'),
-            'upload'     => route('dcat.admin.media-upload'),
-            'new-folder' => route('dcat.admin.media-new-folder'),
+            'index'      => admin_route('media-index'),
+            'move'       => admin_route('media-move'),
+            'delete'     => admin_route('media-delete'),
+            'upload'     => admin_route('media-upload'),
+            'new-folder' => admin_route('media-new-folder'),
         ];
     }
 
@@ -174,13 +174,13 @@ class MediaManagement extends Controller
     {
         $files = array_map(function ($file) {
             return [
-                'download'  => route('dcat.admin.media-download', compact('file')),
+                'download'  => admin_route('media-download', compact('file')),
                 'icon'      => '',
                 'name'      => $file,
                 'preview'   => $this->getFilePreview($file),
                 'isDir'     => false,
                 'size'      => $this->getFilesize($file),
-                'link'      => route('dcat.admin.media-download', compact('file')),
+                'link'      => admin_route('media-download', compact('file')),
                 'url'       => $this->storage->url($file),
                 'time'      => $this->getFileChangeTime($file),
             ];
@@ -191,7 +191,7 @@ class MediaManagement extends Controller
 
     public function formatDirectories($dirs = [])
     {
-        $url = route('dcat.admin.media-index', ['path' => '__path__', 'view' => request('view')]);
+        $url = admin_route('media-index', ['path' => '__path__', 'view' => request('view')]);
 
         $preview = "<a href=\"$url\"><span class=\"file-icon text-aqua\"><i class=\"fa fa-folder\"></i></span></a>";
 
@@ -203,7 +203,7 @@ class MediaManagement extends Controller
                 'preview'   => str_replace('__path__', $dir, $preview),
                 'isDir'     => true,
                 'size'      => '',
-                'link'      => route('dcat.admin.media-index', ['path' => '/'.trim($dir, '/'), 'view' => request('view')]),
+                'link'      => admin_route('media-index', ['path' => '/'.trim($dir, '/'), 'view' => request('view')]),
                 'url'       => $this->storage->url($dir),
                 'time'      => $this->getFileChangeTime($dir),
             ];
@@ -227,7 +227,7 @@ class MediaManagement extends Controller
 
             $navigation[] = [
                 'name'  => $folder,
-                'url'   => route('dcat.admin.media-index', ['path' => $path]),
+                'url'   => admin_route('media-index', ['path' => $path]),
             ];
         }
 
