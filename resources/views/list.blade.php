@@ -246,10 +246,11 @@ $(function () {
                                         <div class="dropdown-menu dropdown-menu-lg-right">
                                           <button class="dropdown-item file-rename" data-toggle="modal" data-target="#moveModal" data-name="{{ $item['name'] }}">改名&移动</button>
                                           <button class="dropdown-item file-delete" data-path="{{ $item['name'] }}">删除</button>
+                                          <button class="dropdown-item" data-toggle="modal" data-target="#urlModal" data-url="{{ $item['url'] }}">路径</button>
                                           @unless($item['isDir'])
+                                            <div class="dropdown-divider"></div>
                                             <a class="dropdown-item" target="_blank" href="{{ $item['download'] }}">下载</a>
                                           @endunless
-                                          <button class="dropdown-item" data-toggle="modal" data-target="#urlModal" data-url="{{ $item['url'] }}">路径</button>
                                         </div>
                                     </div>
                                 </span>
