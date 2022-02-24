@@ -17,8 +17,23 @@ composer require xingchenboy/dcat-files-management
 
 在 `开发工具->扩展` 安装本扩展
 
+### 设置路由
+`use Illuminate\Support\Facades\Route;`
+
+`Route::get('media', [DcatFilesManagementController::class, 'index'])->name('media-index');`
+
+`Route::get('media/download', [DcatFilesManagementController::class, 'download'])->name('media-download');`
+
+`Route::delete('media/delete',  [DcatFilesManagementController::class, 'delete'])->name('media-delete');`
+
+`Route::put('media/move',  [DcatFilesManagementController::class, 'move'])->name('media-move');`
+
+`Route::post('media/upload',  [DcatFilesManagementController::class, 'upload'])->name('media-upload');`
+
+`Route::post('media/folder',  [DcatFilesManagementController::class, 'newFolder'])->name('media-new-folder');`
+
 ### 访问
-在 `菜单` 里添加 media 进行访问
+在 `菜单` 里添加 路径为 media 进行访问
 
 ## 开源协议
 

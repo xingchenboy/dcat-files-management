@@ -3,7 +3,6 @@
 namespace Xingchenboy\DcatFilesManagement;
 
 use Dcat\Admin\Extend\ServiceProvider;
-use Dcat\Admin\Admin;
 
 class DcatFilesManagementServiceProvider extends ServiceProvider
 {
